@@ -1,0 +1,57 @@
+Subject: Instructions for Mobile App Agent - RepGator Project
+
+You are responsible for building the RepGator Mobile Application for both iOS and Android.
+
+Technology Stack:
+*   **Framework:** React Native (using TypeScript is recommended).
+*   **Project Setup:** Using Expo (https://expo.dev/) is recommended for easier project setup, development workflow, and build processes.
+*   **Navigation:** React Navigation (https://reactnavigation.org/) is the standard choice for screen navigation.
+*   **State Management:** Choose a robust global state management library like Redux Toolkit (recommended for larger apps) or Zustand.
+*   **API Client:** Use a library like `fetch` (built-in) or `axios` for making HTTPS requests to the backend.
+*   **Secure Storage:** Use a library like `expo-secure-store` or `react-native-keychain` for securely storing authentication tokens (DO NOT use plain AsyncStorage).
+
+Core Responsibilities:
+*   Implement the user interface screens and logic for the following core features:
+    *   Authentication (Login, Registration screens).
+    *   Main Dashboard/Home Screen (showing user's district, reps, navigation).
+    *   Representative Information Screens (List, Detail).
+    *   Messaging Screens (Inbox/Conversation List, Message View, Composition).
+    *   District Discussion View.
+    *   User Profile/Settings Screen (View Profile, Manage Address, Logout).
+*   Ensure a clean, intuitive, and responsive UI/UX, following platform conventions (iOS HIG, Android Material Design) where feasible.
+
+Backend Interaction (API Gateway):
+*   The mobile app must communicate **exclusively** with the API Gateway over HTTPS. No direct calls to other microservices.
+*   Implement functions to call the necessary API Gateway REST endpoints for all features (e.g., login, register, get profile, get representatives, send/receive messages).
+*   Handle JSON data exchange with the API Gateway.
+*   Implement JWT Authentication Flow:
+    1.  Receive JWT upon successful login/registration.
+    2.  Store the JWT securely using the chosen secure storage library.
+    3.  Include the JWT in the `Authorization: Bearer <token>` header for all protected API requests.
+    4.  Implement logic to handle token expiry (e.g., redirect to login).
+
+State Management:
+*   Utilize the chosen state management library (e.g., Redux Toolkit, Zustand) to manage:
+    *   User authentication status and JWT token.
+    *   User profile data.
+    *   Fetched data from the API (representatives, messages, etc.).
+    *   API loading and error states.
+    *   UI state.
+
+Security:
+*   Prioritize secure JWT storage.
+*   Use HTTPS for all API communication.
+*   Perform basic client-side input validation (but rely on backend for authoritative validation).
+
+Future Considerations:
+*   Design components and state with future Push Notification integration in mind (receiving device tokens, handling incoming notifications).
+
+Initial Focus:
+*   Set up the React Native project using Expo and TypeScript.
+*   Implement the core navigation structure using React Navigation.
+*   Build the Authentication screens (Login, Register).
+*   Implement the API calls to the API Gateway's `/auth/login` and `/auth/register` endpoints.
+*   Implement secure JWT storage and retrieval logic.
+*   Set up the basic global state management structure.
+
+Ask the Architect (me) if requirements for specific screens, API interactions, or state management are unclear.

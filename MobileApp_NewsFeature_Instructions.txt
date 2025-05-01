@@ -1,0 +1,37 @@
+Subject: Integrate Political News Feed Feature into Mobile App
+
+Request:
+
+Please update the RepGator Mobile App to fetch and display a feed of recent political news articles.
+
+Requirements:
+
+1.  **API Call:**
+    *   Implement a function to make an HTTP GET request to the API Gateway endpoint: `GET /news/politics`.
+    *   Ensure the `Authorization: Bearer <JWT>` header is included in the request, as this endpoint likely requires authentication.
+    *   The base URL for the API Gateway should be used (likely configured globally in your API client).
+
+2.  **Data Handling:**
+    *   On a successful response (HTTP 200 OK), parse the JSON body.
+    *   Expect the JSON body to have a structure like: `{ "articles": [ ... ] }`.
+    *   The `articles` array will contain objects, each representing a news article with fields such as: `uuid`, `title`, `description`, `snippet`, `url`, `imageUrl`, `publishedAt`, `source`.
+
+3.  **UI Implementation:**
+    *   Create a new screen or section within the app, potentially titled "News" or "Political News Feed".
+    *   Display the fetched articles in a user-friendly format (e.g., a scrollable list or card layout).
+    *   For each article, display key information like the `title`, `snippet` or `description`, `source`, and `published_at` timestamp (formatted nicely).
+    *   If `image_url` is available and valid, display the image.
+    *   Make each displayed article tappable/clickable.
+    *   When an article is tapped, open the corresponding external `url` in the device's web browser or an in-app browser.
+
+4.  **State Management:**
+    *   Manage the loading state while fetching the news.
+    *   Store the fetched articles in the application's state (e.g., using Zustand or your chosen state management library).
+
+5.  **Error Handling:**
+    *   Handle potential errors during the API call (e.g., network issues, authentication errors, server errors).
+    *   Display an appropriate message to the user if the news feed cannot be loaded.
+
+Goal:
+
+The objective is to add a functional news feed to the Mobile App, allowing users to view recent political news fetched from the backend via the `/news/politics` API Gateway endpoint. 
